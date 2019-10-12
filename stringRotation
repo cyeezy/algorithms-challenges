@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+
+using namespace std; 
+
+//string rotation
+
+char temp='a';
+bool rotate(string one, string two)
+{
+  if(one.length()!=two.length())  //checks if the strings are the same length
+  {
+    return false;
+  }
+for(int p=0; p<two.length()-1; p++)  //changes both strings to be lowercase
+{
+  one[p]=tolower(one[p]);
+  two[p]=tolower(two[p]);
+}
+for(int i=0; i<two.length(); i++)  //compares strings and rotates if not equal 
+{
+  if (one==two)
+  {
+    return true;  //if strings match
+  }
+  temp=two.at(0);
+  for(int j=0; j<two.length()-1; j++)
+  {
+    
+    two.at(j)=two.at(j+1);
+  }
+  two.at(two.length()-1)=temp;
+}
+
+return false; //if strings do not match
+}
+
+
+int main() {
+  if(rotate("abcde","DeAbc"))
+  {
+    cout << "True";
+  }
+  else 
+  {
+    cout << "False";
+  }
+}
